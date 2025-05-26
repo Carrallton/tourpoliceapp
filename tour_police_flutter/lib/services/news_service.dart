@@ -1,4 +1,3 @@
-// lib/services/news_service.dart
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/news_model.dart';
@@ -8,7 +7,8 @@ class NewsService {
   static const String _baseUrl = apiBaseUrl;
 
   Future<List<NewsModel>> getNews() async {
-    final response = await http.get(Uri.parse('$_baseUrl/api/news/'));
+    final url = Uri.parse('$_baseUrl/api/news/');
+    final response = await http.get(url);
 
     if (response.statusCode == 200) {
       List data = jsonDecode(response.body);
